@@ -86,7 +86,9 @@ task :sysinfo do
   puts
   puts "RUBY VERSION"
   sh "ruby --version"
+
   puts
   puts "MRUBY VERSION"
   sh "./mruby/bin/mruby --version"
+  Dir.chdir("mruby") { sh "git log -1" }
 end

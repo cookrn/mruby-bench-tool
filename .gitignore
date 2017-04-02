@@ -1,4 +1,5 @@
 *.c
 *.mrbc
 *.mrbx
+.ruby-version
 mruby
