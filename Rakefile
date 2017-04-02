@@ -83,6 +83,7 @@ end
 desc "Print system and ruby version infos"
 task :sysinfo do
   sh "sh sysinfo.sh"
+
   puts
   puts "RUBY VERSION"
   sh "ruby --version"
@@ -90,5 +91,7 @@ task :sysinfo do
   puts
   puts "MRUBY VERSION"
   sh "./mruby/bin/mruby --version"
+
+  puts
   Dir.chdir("mruby") { sh "git log -1" }
 end

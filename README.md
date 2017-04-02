@@ -1,8 +1,9 @@
 # mruby Bench Tool
 
 A simple tool to use for benchmarking a Ruby script against (c)ruby and mruby on
-your local machine. Two example scripts are included with their results from my
-laptop pasted below: `expensive.rb` and `string_concat.rb`.
+your local machine. Six benchmark scripts are included and contributions will be
+accepted for more. Four of the included benchmarks are from the mruby repository
+but modified to have their print statements removed.
 
 ## Install
 
@@ -13,7 +14,7 @@ laptop pasted below: `expensive.rb` and `string_concat.rb`.
 
 ## Usage
 
-* Optionally add additional *.rb scripts to benchmark
+* Optionally add or remove *.rb scripts to benchmark
 * Run `rake`
 
 ```
@@ -45,6 +46,7 @@ ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin16]
 MRUBY VERSION
 ./mruby/bin/mruby --version
 mruby 1.2.0 (2015-11-17)
+
 git log -1
 commit a49c9f86e73d76cbeba30e1affda874fcab0a504
 Author: Yukihiro "Matz" Matsumoto <matz@ruby-lang.org>
