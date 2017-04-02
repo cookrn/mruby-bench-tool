@@ -67,8 +67,8 @@ task :bench do
     puts "BENCHMARK: #{prefix}"
 
     Benchmark.bmbm do |experiment|
-      experiment.report("ruby") { system "ruby #{b}" }
-      experiment.report("mruby") { system "./#{prefix}.mrbx" }
+      experiment.report("ruby") { system "ruby #{b}" or raise "#{prefix} failed in cruby" }
+      experiment.report("mruby") { system "./#{prefix}.mrbx" or raise "#{prefix} failed in mruby" }
     end
   end
 end
