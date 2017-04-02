@@ -56,7 +56,7 @@ task :clean do
   end
 end
 
-desc "Run the cruby vs. mruby benchmarks"
+desc "Run the cruby versus mruby benchmarks"
 task :bench do
   require 'benchmark'
   
@@ -75,7 +75,7 @@ end
 
 desc "Check if mruby is symlinked in the current directory"
 task :install do
-  unless Dir.exist?("mruby")
+  unless Dir.exist?("mruby/bin") && File.exist?("mruby/bin/mruby") && File.exist?("mruby/bin/mrbc")
     raise "Please symlink your mruby source directory here as 'mruby' once you have compiled it!"
   end
 end
