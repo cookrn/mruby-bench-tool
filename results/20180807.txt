@@ -1,0 +1,119 @@
+$ rake
+sh sysinfo.sh
+
+                 -/+:.          cookrn@cookrn-macbook-air
+                :++++.          OS: 64bit Mac OS X 10.13.6 17G65
+               /+++/.           Kernel: x86_64 Darwin 17.7.0
+       .:-::- .+/:-``.::-       Uptime: 21d 8h 29m
+    .:/++++++/::::/++++++/:`    Packages: 138
+  .:///////////////////////:`   Shell: rake
+  ////////////////////////`     Resolution: 1440x900
+ -+++++++++++++++++++++++`      DE: Aqua
+ /++++++++++++++++++++++/       WM: Quartz Compositor
+ /sssssssssssssssssssssss.      WM Theme: Graphite
+ :ssssssssssssssssssssssss-     Font: Monaco 18
+  osssssssssssssssssssssssso/`  CPU: Intel Core i5-2557M @ 1.70GHz
+  `syyyyyyyyyyyyyyyyyyyyyyyy+`  GPU: Intel HD Graphics 3000
+   `ossssssssssssssssssssss/    RAM: 2202MiB / 4096MiB
+     :ooooooooooooooooooo+.
+      `:+oo+/:-..-:/+o+/-
+
+
+RUBY VERSION
+ruby --version
+ruby 2.6.0preview2 (2018-05-31 trunk 63539) [x86_64-darwin17]
+
+MRUBY VERSION
+./mruby/bin/mruby --version
+mruby 1.4.1 (2018-4-27)
+
+git log -1
+commit 54246db00aa9ae5a048d65f4263a3d14fd65d9d0 (HEAD -> master, origin/master, origin/HEAD)
+Author: pyama86 <pyama@pepabo.com>
+Date:   Mon Aug 6 18:15:00 2018 +0900
+
+    irep is released when Fiber is terminated
+
+./mruby/bin/mrbc -Bbm_ao_render -o bm_ao_render.mrbc bm_ao_render.rb
+
+gcc -std=c99 -Imruby/include bm_ao_render.c -o bm_ao_render.mrbx mruby/build/host/lib/libmruby.a -lm
+
+./mruby/bin/mrbc -Bbm_app_lc_fizzbuzz -o bm_app_lc_fizzbuzz.mrbc bm_app_lc_fizzbuzz.rb
+
+gcc -std=c99 -Imruby/include bm_app_lc_fizzbuzz.c -o bm_app_lc_fizzbuzz.mrbx mruby/build/host/lib/libmruby.a -lm
+
+./mruby/bin/mrbc -Bbm_fib -o bm_fib.mrbc bm_fib.rb
+
+gcc -std=c99 -Imruby/include bm_fib.c -o bm_fib.mrbx mruby/build/host/lib/libmruby.a -lm
+
+./mruby/bin/mrbc -Bbm_so_lists -o bm_so_lists.mrbc bm_so_lists.rb
+
+gcc -std=c99 -Imruby/include bm_so_lists.c -o bm_so_lists.mrbx mruby/build/host/lib/libmruby.a -lm
+
+./mruby/bin/mrbc -Bexpensive -o expensive.mrbc expensive.rb
+
+gcc -std=c99 -Imruby/include expensive.c -o expensive.mrbx mruby/build/host/lib/libmruby.a -lm
+
+./mruby/bin/mrbc -Bstring_concat -o string_concat.mrbc string_concat.rb
+
+gcc -std=c99 -Imruby/include string_concat.c -o string_concat.mrbx mruby/build/host/lib/libmruby.a -lm
+
+BENCHMARK: bm_ao_render
+Rehearsal -----------------------------------------
+ruby    0.000177   0.000917   7.409158 (  7.419052)
+mruby   0.000188   0.000839  16.266076 ( 16.289241)
+------------------------------- total: 23.675234sec
+
+            user     system      total        real
+ruby    0.000135   0.000763   7.444830 (  7.462076)
+mruby   0.000160   0.000875  15.763997 ( 15.778532)
+
+BENCHMARK: bm_app_lc_fizzbuzz
+Rehearsal -----------------------------------------
+ruby    0.000166   0.000941  75.148913 ( 75.225362)
+mruby   0.000198   0.001017  40.476844 ( 40.536294)
+------------------------------ total: 115.625757sec
+
+            user     system      total        real
+ruby    0.000251   0.001299  74.957092 ( 75.027031)
+mruby   0.000187   0.000790  40.727527 ( 40.767750)
+
+BENCHMARK: bm_fib
+Rehearsal -----------------------------------------
+ruby    0.000137   0.000734   4.327840 (  4.343891)
+mruby   0.000130   0.000733   8.405063 (  8.423752)
+------------------------------- total: 12.732903sec
+
+            user     system      total        real
+ruby    0.000174   0.001256   3.862311 (  3.869382)
+mruby   0.000166   0.001119   9.520639 (  9.532049)
+
+BENCHMARK: bm_so_lists
+Rehearsal -----------------------------------------
+ruby    0.000186   0.000960   0.899169 (  0.909747)
+mruby   0.000144   0.000743   4.037203 (  4.056623)
+-------------------------------- total: 4.936372sec
+
+            user     system      total        real
+ruby    0.000144   0.001133   0.893593 (  0.910239)
+mruby   0.000149   0.000847   3.760750 (  3.765963)
+
+BENCHMARK: expensive
+Rehearsal -----------------------------------------
+ruby    0.000158   0.000839   0.854044 (  0.860359)
+mruby   0.000137   0.000715   1.366284 (  1.380736)
+-------------------------------- total: 2.220328sec
+
+            user     system      total        real
+ruby    0.000180   0.001197   0.905626 (  0.909643)
+mruby   0.000151   0.000798   1.403258 (  1.406116)
+
+BENCHMARK: string_concat
+Rehearsal -----------------------------------------
+ruby    0.000203   0.001165   1.546251 (  1.686225)
+mruby   0.000219   0.000911   1.027907 (  1.134616)
+-------------------------------- total: 2.574158sec
+
+            user     system      total        real
+ruby    0.000190   0.000784   1.110358 (  1.162264)
+mruby   0.000137   0.000622   0.949349 (  0.988315)
