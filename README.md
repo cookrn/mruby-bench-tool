@@ -22,10 +22,10 @@ $ rake
 sh sysinfo.sh
 
                  -/+:.          cookrn@cookrn-macbook-air
-                :++++.          OS: 64bit Mac OS X 10.12.6 16G29
-               /+++/.           Kernel: x86_64 Darwin 16.7.0
-       .:-::- .+/:-``.::-       Uptime: 34d 3h 1m
-    .:/++++++/::::/++++++/:`    Packages: 125
+                :++++.          OS: 64bit Mac OS X 10.13.6 17G65
+               /+++/.           Kernel: x86_64 Darwin 17.7.0
+       .:-::- .+/:-``.::-       Uptime: 21d 8h 29m
+    .:/++++++/::::/++++++/:`    Packages: 138
   .:///////////////////////:`   Shell: rake
   ////////////////////////`     Resolution: 1440x900
  -+++++++++++++++++++++++`      DE: Aqua
@@ -34,27 +34,25 @@ sh sysinfo.sh
  :ssssssssssssssssssssssss-     Font: Monaco 18
   osssssssssssssssssssssssso/`  CPU: Intel Core i5-2557M @ 1.70GHz
   `syyyyyyyyyyyyyyyyyyyyyyyy+`  GPU: Intel HD Graphics 3000
-   `ossssssssssssssssssssss/    RAM: 2065MiB / 4096MiB
+   `ossssssssssssssssssssss/    RAM: 2202MiB / 4096MiB
      :ooooooooooooooooooo+.
       `:+oo+/:-..-:/+o+/-
 
 
 RUBY VERSION
 ruby --version
-ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin16]
+ruby 2.6.0preview2 (2018-05-31 trunk 63539) [x86_64-darwin17]
 
 MRUBY VERSION
 ./mruby/bin/mruby --version
-mruby 1.3.0 (2017-7-4)
+mruby 1.4.1 (2018-4-27)
 
 git log -1
-commit ab99e2c293167935033016750c010047a2aba76a
-Author: Yukihiro "Matz" Matsumoto <matz@ruby-lang.org>
-Date:   Fri Sep 1 06:50:24 2017 +0900
+commit 54246db00aa9ae5a048d65f4263a3d14fd65d9d0 (HEAD -> master, origin/master, origin/HEAD)
+Author: pyama86 <pyama@pepabo.com>
+Date:   Mon Aug 6 18:15:00 2018 +0900
 
-    Avoid copying over initialized procs using `initialize_copy`; fix #3803
-
-    It may be better to raise exceptions, but CRuby doesn't.
+    irep is released when Fiber is terminated
 
 ./mruby/bin/mrbc -Bbm_ao_render -o bm_ao_render.mrbc bm_ao_render.rb
 
@@ -82,61 +80,61 @@ gcc -std=c99 -Imruby/include string_concat.c -o string_concat.mrbx mruby/build/h
 
 BENCHMARK: bm_ao_render
 Rehearsal -----------------------------------------
-ruby    0.000000   0.000000   8.290000 (  8.316154)
-mruby   0.000000   0.000000  39.540000 ( 39.687668)
-------------------------------- total: 47.830000sec
+ruby    0.000177   0.000917   7.409158 (  7.419052)
+mruby   0.000188   0.000839  16.266076 ( 16.289241)
+------------------------------- total: 23.675234sec
 
             user     system      total        real
-ruby    0.000000   0.000000   8.150000 (  8.163363)
-mruby   0.000000   0.000000  38.860000 ( 38.921634)
+ruby    0.000135   0.000763   7.444830 (  7.462076)
+mruby   0.000160   0.000875  15.763997 ( 15.778532)
 
 BENCHMARK: bm_app_lc_fizzbuzz
 Rehearsal -----------------------------------------
-ruby    0.000000   0.010000 106.120000 (107.415321)
-mruby   0.000000   0.000000  82.330000 ( 83.844081)
------------------------------- total: 188.450000sec
+ruby    0.000166   0.000941  75.148913 ( 75.225362)
+mruby   0.000198   0.001017  40.476844 ( 40.536294)
+------------------------------ total: 115.625757sec
 
             user     system      total        real
-ruby    0.000000   0.000000 104.710000 (105.189789)
-mruby   0.000000   0.000000  80.410000 ( 80.662828)
+ruby    0.000251   0.001299  74.957092 ( 75.027031)
+mruby   0.000187   0.000790  40.727527 ( 40.767750)
 
 BENCHMARK: bm_fib
 Rehearsal -----------------------------------------
-ruby    0.000000   0.000000   5.130000 (  5.176603)
-mruby   0.000000   0.000000  27.260000 ( 27.323664)
-------------------------------- total: 32.390000sec
+ruby    0.000137   0.000734   4.327840 (  4.343891)
+mruby   0.000130   0.000733   8.405063 (  8.423752)
+------------------------------- total: 12.732903sec
 
             user     system      total        real
-ruby    0.000000   0.000000   5.170000 (  5.176922)
-mruby   0.000000   0.000000  27.220000 ( 27.268533)
+ruby    0.000174   0.001256   3.862311 (  3.869382)
+mruby   0.000166   0.001119   9.520639 (  9.532049)
 
 BENCHMARK: bm_so_lists
 Rehearsal -----------------------------------------
-ruby    0.000000   0.000000   0.960000 (  0.963063)
-mruby   0.000000   0.000000  13.980000 ( 14.031075)
-------------------------------- total: 14.940000sec
+ruby    0.000186   0.000960   0.899169 (  0.909747)
+mruby   0.000144   0.000743   4.037203 (  4.056623)
+-------------------------------- total: 4.936372sec
 
             user     system      total        real
-ruby    0.000000   0.000000   0.990000 (  0.987860)
-mruby   0.000000   0.000000  13.840000 ( 13.877867)
+ruby    0.000144   0.001133   0.893593 (  0.910239)
+mruby   0.000149   0.000847   3.760750 (  3.765963)
 
 BENCHMARK: expensive
 Rehearsal -----------------------------------------
-ruby    0.000000   0.000000   0.950000 (  0.948398)
-mruby   0.000000   0.010000   4.440000 (  4.451912)
--------------------------------- total: 5.390000sec
+ruby    0.000158   0.000839   0.854044 (  0.860359)
+mruby   0.000137   0.000715   1.366284 (  1.380736)
+-------------------------------- total: 2.220328sec
 
             user     system      total        real
-ruby    0.000000   0.000000   0.920000 (  0.928628)
-mruby   0.000000   0.000000   4.270000 (  4.282490)
+ruby    0.000180   0.001197   0.905626 (  0.909643)
+mruby   0.000151   0.000798   1.403258 (  1.406116)
 
 BENCHMARK: string_concat
 Rehearsal -----------------------------------------
-ruby    0.000000   0.000000   1.290000 (  1.645040)
-mruby   0.000000   0.000000   0.910000 (  1.044064)
--------------------------------- total: 2.200000sec
+ruby    0.000203   0.001165   1.546251 (  1.686225)
+mruby   0.000219   0.000911   1.027907 (  1.134616)
+-------------------------------- total: 2.574158sec
 
             user     system      total        real
-ruby    0.000000   0.000000   0.920000 (  1.000045)
-mruby   0.000000   0.000000   0.890000 (  0.958452)
+ruby    0.000190   0.000784   1.110358 (  1.162264)
+mruby   0.000137   0.000622   0.949349 (  0.988315)
 ```
